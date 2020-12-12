@@ -1,0 +1,44 @@
+{
+  "name": "@cubedevinc/tsconfig",
+  "description": "TypeScript config for Cube Dev Inc repositories",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "tsconfig.json",
+  "keywords": [
+    "cubedevinc",
+    "tsconfig"
+  ],
+  "author": {
+    "name": "Cube Dev Inc.",
+    "url": "https://github.com/cubedevinc"
+  },
+  "homepage": "https://github.com/cubedevinc/config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubedevinc/config.git",
+    "directory": "packages/tsconfig"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "pretest": "curl https://json.schemastore.org/tsconfig > src/schema.json",
+    "test": "ajv validate -s src/schema.json -d tsconfig.json --errors=json",
+    "posttest": "rimraf src/schema.json",
+    "build": "echo '0'",
+    "lint": "yarn test"
+  },
+  "peerDependencies": {
+    "typescript": ">=4"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cubedevinc/lint-staged-config": "0.0.0",
+    "@cubedevinc/prettier-config": "0.0.0",
+    "ajv-cli": "^3",
+    "lint-staged": "^10",
+    "prettier": "^2",
+    "rimraf": "^3"
+  }
+}
